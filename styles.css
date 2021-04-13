@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  --navloadTIme: 300ms;
+  --listAnimationTime: 500ms;
+  --delay_ani: calc(var(--navloadTIme) + var(--listAnimationTime));
+}
+
+nav {
+  background-color: #000;
+  color: white;
+  animation: navload var(--navloadTIme) ease-in;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+li a {
+  text-decoration: none;
+  color: white;
+}
+
+nav li {
+  list-style: none;
+  padding: 10px;
+  margin: 0 10px;
+  animation-name: listAnimate;
+  animation-duration: var(--listAnimationTime);
+  animation-timing-function: ease-in;
+  animation-delay: var(--navloadTIme);
+  animation-fill-mode: forwards;
+  transform: scale(0);
+}
+
+nav li:first-child {
+  animation-name: home_list;
+  transform: translateX(-1000%);
+}
+
+nav li:last-child {
+  animation-name: contact_list;
+  transform: translateX(1000%);
+}
+
+h1,
+p {
+  transform: translateY(-50px);
+  animation: article_animate 300ms ease-in;
+  animation-delay: var(--delay_ani);
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+p {
+  animation-delay: calc(var(--delay_ani) + 200ms);
+}
+
+li nav li:hover {
+  text-decoration: underline;
+}
+
+.container {
+  padding: 0px 10em;
+}
+
+main {
+  padding: 30px;
+}
+
+@keyframes navload {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes listAnimate {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes home_list {
+  0% {
+    transform: translateX(-1000%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes contact_list {
+  0% {
+    transform: translateX(1000%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes article_animate {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
